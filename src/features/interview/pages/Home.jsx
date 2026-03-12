@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
+import { useAuth } from '../../auth/hooks/useAuth.js'
 
 const Home = () => {
-
+    const { handleLogout } = useAuth();
     const { loading, generateReport,reports } = useInterview()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
@@ -27,6 +28,11 @@ const Home = () => {
         }
     }
 
+    const handleLogoutAPI = async () => {
+        await handleLogout();
+        navigate("/login")
+    }
+
     if (loading) {
         return (
             <main className='loading-screen'>
@@ -37,7 +43,7 @@ const Home = () => {
 
     return (
         <div className='home-page'>
-
+            <button onClick={ handleLogoutAPI } className='logout-btn'>Logout</button>
             {/* Page Header */}
             <header className='page-header'>
                 <h1>Create Your Custom <span className='highlight'>Interview Plan</span></h1>

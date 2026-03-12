@@ -26,7 +26,7 @@ const Login = () => {
         <main>
             <div className="form-container">
                 <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={ handleSubmit }>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input

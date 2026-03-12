@@ -18,7 +18,7 @@ export const useInterview = () => {
     const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
         setLoading(true)
         let response = null
-        console.log("**************************")
+        // console.log("**************************")
         try {
             response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile })
             setReport(response.interviewReport)
